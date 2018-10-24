@@ -9,20 +9,29 @@ namespace BestMovies.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers
-        [Route("/Customers/")]
+        private List<Customers> _modelCustomers =  new List<Customers>() { new Customers {IdCustomers = 1, FirstName = "John", LastName = "Smith" },
+                                                    new Customers {IdCustomers = 2, FirstName = "Mary", LastName = "Williams"}
+                                              };
+        
         public ActionResult Index()
         {
-            var model = new List<Customers>() { new Customers {IdCustomers = 1, FirstName = "John", LastName = "Smith" },
-                                                new Customers {IdCustomers = 2, FirstName = "Mary", LastName = "Williams"}
-                                              };
-            return View(model);
+          
+            return View(_modelCustomers);
         }
 
         // GET: Customers/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            var customer = _modelCustomers.FirstOrDefault(c => c.IdCustomers == id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(customer);
+            }
         }
 
         // GET: Customers/Create
