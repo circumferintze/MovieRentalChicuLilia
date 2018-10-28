@@ -9,8 +9,8 @@ namespace BestMovies.Controllers
 {
     public class CustomersController : Controller
     {
-        private List<Customers> _modelCustomers =  new List<Customers>() { new Customers {IdCustomers = 1, FirstName = "John", LastName = "Smith" },
-                                                    new Customers {IdCustomers = 2, FirstName = "Mary", LastName = "Williams"}
+        private List<Customers> _modelCustomers =  new List<Customers>() { new Customers {CustomersId = 1, FirstName = "John", LastName = "Smith" },
+                                                    new Customers {CustomersId = 2, FirstName = "Mary", LastName = "Williams"}
                                               };
         
         public ActionResult Index()
@@ -23,7 +23,7 @@ namespace BestMovies.Controllers
         public ActionResult Details(int id)
         {
 
-            var customer = _modelCustomers.FirstOrDefault(c => c.IdCustomers == id);
+            var customer = _modelCustomers.FirstOrDefault(c => c.CustomersId == id);
             if (customer == null)
             {
                 return HttpNotFound();

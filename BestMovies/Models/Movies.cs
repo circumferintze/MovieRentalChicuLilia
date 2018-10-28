@@ -9,5 +9,8 @@ namespace BestMovies.Models
     {
         public int MoviesId { get; set; }
         public string Title { get; set; }
+        public virtual ICollection<Customers> Customers { get; set; }
+        public int CustomersId { get; set; }
+
     }
 }

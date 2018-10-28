@@ -45,6 +45,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -147,13 +155,37 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BestMoviesDB\MovieContext.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810281746081_FirstMigr.cs" />
+    <Compile Include="Migrations\201810281746081_FirstMigr.Designer.cs">
+      <DependentUpon>201810281746081_FirstMigr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810281752006_ForeignKeyDomainModelId.cs" />
+    <Compile Include="Migrations\201810281752006_ForeignKeyDomainModelId.Designer.cs">
+      <DependentUpon>201810281752006_ForeignKeyDomainModelId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810281757036_relationDomModelandMembershipType.cs" />
+    <Compile Include="Migrations\201810281757036_relationDomModelandMembershipType.Designer.cs">
+      <DependentUpon>201810281757036_relationDomModelandMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810281800418_newRelDomainandMembTypes.cs" />
+    <Compile Include="Migrations\201810281800418_newRelDomainandMembTypes.Designer.cs">
+      <DependentUpon>201810281800418_newRelDomainandMembTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810281804025_dd.cs" />
+    <Compile Include="Migrations\201810281804025_dd.Designer.cs">
+      <DependentUpon>201810281804025_dd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\DomainModel.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,6 +248,23 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810281746081_FirstMigr.resx">
+      <DependentUpon>201810281746081_FirstMigr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810281752006_ForeignKeyDomainModelId.resx">
+      <DependentUpon>201810281752006_ForeignKeyDomainModelId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810281757036_relationDomModelandMembershipType.resx">
+      <DependentUpon>201810281757036_relationDomModelandMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810281800418_newRelDomainandMembTypes.resx">
+      <DependentUpon>201810281800418_newRelDomainandMembTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810281804025_dd.resx">
+      <DependentUpon>201810281804025_dd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
