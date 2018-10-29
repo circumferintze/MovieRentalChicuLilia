@@ -7,6 +7,6 @@ namespace BestMovies.Models
       public virtual ICollection<Customers> Customers { get; set; }
       public virtual MembershipType MembershipType { get; set; }
       public int MembershipTypeId { get; set; }
-      public bool IsSubscribedToNewsLetter { get; set; }
+      public bool IsSubscribedToNewsLetter { get; set; }   
     }
 }
