@@ -12,6 +12,7 @@ namespace BestMovies.BestMoviesDB
         }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Movies> Movies { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<MembershipType> MembershipTypes { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

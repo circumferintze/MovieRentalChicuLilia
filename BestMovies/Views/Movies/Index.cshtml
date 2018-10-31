@@ -4,17 +4,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h2>Movies</h2>
-@if (Model.Count == 0)
-{
-    <div>We don't have any movies yet.</div>
-}
-else
-{
-    foreach (var movie in Model)
+
+<input class="btn btn-default" type="button" value="NEW MOVIE" onclick="location.href='@Url.Action("Create", "Movies")'" />
+<hr />
+<table width="500" border="0">
+    @if (Model.Count == 0)
     {
-        <div>@Html.ActionLink(movie.Title , "Details", new { id = movie.MoviesId })</div>
+        <div>We don't have any movies yet.</div>
     }
-}
+    else
+    {
+        <thead>
+            <tr>
+                <td><b>Movie</b></td>
+                <td><b>Genre</b></td>
+            </tr>
+        </thead>
+        foreach (var movie in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(movie.Title, "Edit", new { id = movie.MoviesId })
+                </td>
+                <td>
+                    @movie.Genre.Name
+                </td>
+            </tr>
+        }
+    }
+</table>
 
 
