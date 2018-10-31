@@ -47,11 +47,9 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -182,9 +180,33 @@
     <Compile Include="Migrations\201810281804025_dd.Designer.cs">
       <DependentUpon>201810281804025_dd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810290826514_removDomainModel.cs" />
+    <Compile Include="Migrations\201810290826514_removDomainModel.Designer.cs">
+      <DependentUpon>201810290826514_removDomainModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810310932167_addBirthdayToCustomer.cs" />
+    <Compile Include="Migrations\201810310932167_addBirthdayToCustomer.Designer.cs">
+      <DependentUpon>201810310932167_addBirthdayToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810310935376_maefielBirthdayOptionl.cs" />
+    <Compile Include="Migrations\201810310935376_maefielBirthdayOptionl.Designer.cs">
+      <DependentUpon>201810310935376_maefielBirthdayOptionl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810310948341_addGenreTable.cs" />
+    <Compile Include="Migrations\201810310948341_addGenreTable.Designer.cs">
+      <DependentUpon>201810310948341_addGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810310951282_populteGereTable.cs" />
+    <Compile Include="Migrations\201810310951282_populteGereTable.Designer.cs">
+      <DependentUpon>201810310951282_populteGereTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810311008039_populateGenre2.cs" />
+    <Compile Include="Migrations\201810311008039_populateGenre2.Designer.cs">
+      <DependentUpon>201810311008039_populateGenre2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
-    <Compile Include="Models\DomainModel.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,6 +286,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810281804025_dd.resx">
       <DependentUpon>201810281804025_dd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810290826514_removDomainModel.resx">
+      <DependentUpon>201810290826514_removDomainModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810310932167_addBirthdayToCustomer.resx">
+      <DependentUpon>201810310932167_addBirthdayToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810310935376_maefielBirthdayOptionl.resx">
+      <DependentUpon>201810310935376_maefielBirthdayOptionl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810310948341_addGenreTable.resx">
+      <DependentUpon>201810310948341_addGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810310951282_populteGereTable.resx">
+      <DependentUpon>201810310951282_populteGereTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810311008039_populateGenre2.resx">
+      <DependentUpon>201810311008039_populateGenre2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

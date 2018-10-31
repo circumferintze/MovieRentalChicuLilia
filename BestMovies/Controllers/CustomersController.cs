@@ -1,29 +1,23 @@
-﻿using BestMovies.Models;
-using System;
-using System.Collections.Generic;
+﻿using BestMovies.BestMoviesDB;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BestMovies.Controllers
 {
     public class CustomersController : Controller
     {
-        private List<Customers> _modelCustomers =  new List<Customers>() { new Customers {CustomersId = 1, FirstName = "John", LastName = "Smith" },
-                                                    new Customers {CustomersId = 2, FirstName = "Mary", LastName = "Williams"}
-                                              };
-        
+        private MovieContext _movieContext = new MovieContext();
         public ActionResult Index()
         {
-          
-            return View(_modelCustomers);
+            var customers = _movieContext.Customers.ToList();
+            return View(customers);
         }
 
         // GET: Customers/Details/5
         public ActionResult Details(int id)
         {
 
-            var customer = _modelCustomers.FirstOrDefault(c => c.CustomersId == id);
+            var customer = _movieContext.Customers.FirstOrDefault(c => c.CustomersId == id);
             if (customer == null)
             {
                 return HttpNotFound();

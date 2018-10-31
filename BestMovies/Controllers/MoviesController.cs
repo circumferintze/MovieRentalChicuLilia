@@ -1,28 +1,24 @@
-﻿using BestMovies.Models;
-using System;
-using System.Collections.Generic;
+﻿using BestMovies.BestMoviesDB;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BestMovies.Controllers
 {
     public class MoviesController : Controller
     {
-        private List<Movies> _modelMovies = new List<Movies>() { new Movies {MoviesId=1, Title="Shrek"},
-                                                new Movies {MoviesId=2, Title="Wall-e"}
-                                              };
+        private MovieContext _movieContext = new MovieContext();
         // GET: Movies
         public ActionResult Index()
         {
-           
-            return View(_modelMovies);
+            var movies = _movieContext.Movies.ToList();
+
+            return View(movies);
         }
 
         // GET: Movies/Details/5
         public ActionResult Details(int id)
         {
-            var movie = _modelMovies.FirstOrDefault(m => m.MoviesId == id);
+            var movie = _movieContext.Movies.FirstOrDefault(m => m.MoviesId == id);
             if (movie == null)
             {
                 return HttpNotFound();

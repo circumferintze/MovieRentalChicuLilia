@@ -11,8 +11,22 @@
 }
 else
 {
-    foreach (var customer in Model)
-    {
-        <div>@Html.ActionLink(customer.FirstName + " " + customer.LastName, "Details", new { id = customer.IdCustomers })</div>
-    }
+    <table width="38%">
+        <tr style="color:chartreuse">
+            <td>Customer</td>
+            <td>Membership Type</td>
+        </tr>
+
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>
+                @Html.ActionLink(customer.FirstName + " " + customer.LastName, "Details", new { id = customer.CustomersId })
+            </td>
+            <td>
+                @customer.MembershipType.Type
+            </td>
+        </tr>
+        }
+    </table>
 }

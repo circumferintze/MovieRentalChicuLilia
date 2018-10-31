@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace BestMovies.Models
 {
@@ -11,6 +8,7 @@ namespace BestMovies.Models
         public string Title { get; set; }
         public virtual ICollection<Customers> Customers { get; set; }
         public int CustomersId { get; set; }
+        public virtual Genre Genre { get; set; }
 
     }
 }
