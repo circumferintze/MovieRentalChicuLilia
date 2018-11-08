@@ -10,6 +10,7 @@ namespace BestMovies.Controllers
     public class MoviesController : Controller
     {
         private MovieContext _movieContext = new MovieContext();
+
         // GET: Movies
         public ActionResult Index()
         {
@@ -44,32 +45,27 @@ namespace BestMovies.Controllers
 
         // POST: Movies/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(MovieModel createMovie)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                var genre = _movieContext.Genres.FirstOrDefault(g => g.Name == createMovie.Genre);
+                var movie = new Movies()
                 {
-                    var genre = _movieContext.Genres.FirstOrDefault(g => g.Name == createMovie.Genre);
-                    var movie = new Movies()
-                    {
-                        Title = createMovie.Title,
-                        Genre = genre,
-                        ReleaseDate = createMovie.ReleaseDate,
-                        Added = DateTime.Now,
-                        NumberInStock = createMovie.NumberInStock
-                    };
+                    Title = createMovie.Title,
+                    Genre = genre,
+                    ReleaseDate = (DateTimeOffset)createMovie.ReleaseDate,
+                    Added = DateTime.Now,
+                    NumberInStock = createMovie.NumberInStock
+                };
 
-                    _movieContext.Movies.Add(movie);
-                    _movieContext.SaveChanges();
-                }
-
+                _movieContext.Movies.Add(movie);
+                _movieContext.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            createMovie.Genres = _movieContext.Genres.Select(g => g.Name).ToList();
+            return View(createMovie);
         }
 
         // GET: Movies/Edit/5
@@ -90,30 +86,25 @@ namespace BestMovies.Controllers
 
         // POST: Movies/Edit/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, MovieModel movieEdit)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var genre = _movieContext.Genres.FirstOrDefault(g => g.Name == movieEdit.Genre);
-                    var movie = _movieContext.Movies.Find(id);
-                    movie.Title = movieEdit.Title;
-                    movie.Genre = genre;
-                    movie.ReleaseDate = movieEdit.ReleaseDate;
-                    movie.NumberInStock = movieEdit.NumberInStock;
+                var genre = _movieContext.Genres.FirstOrDefault(g => g.Name == movieEdit.Genre);
+                var movie = _movieContext.Movies.Find(id);
+                movie.Title = movieEdit.Title;
+                movie.Genre = genre;
+                movie.ReleaseDate = (DateTimeOffset)movieEdit.ReleaseDate;
+                movie.NumberInStock = movieEdit.NumberInStock;
 
-                    _movieContext.Entry(movie).State = EntityState.Modified;
-                    _movieContext.SaveChanges();
-                }
-                // TODO: Add update logic here
+                _movieContext.Entry(movie).State = EntityState.Modified;
+                _movieContext.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            movieEdit.Genres = _movieContext.Genres.Select(g => g.Name).ToList();
+            return View(movieEdit);
         }
 
         // GET: Movies/Delete/5

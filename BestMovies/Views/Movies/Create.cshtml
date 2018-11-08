@@ -23,6 +23,13 @@
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ConfirmTitle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ConfirmTitle, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -36,6 +43,7 @@
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Genre, new SelectList(Model.Genres), String.Empty, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Genre,"", new { @class = "text-danger" })
+            @*<input type="submit" value ="submit"/>*@
         </div>
     </div>
     <div class="form-group">
